@@ -1,0 +1,6 @@
+Id	Name	Company	Type	Cost	Quantity	NOC	Mfg Date	Exp Date
+1	Dolo650	Dolo	strip	5	10	Y	1.6.2021	1.12.2021
+2	Crocyn	Cro	strip	10	5	Y	1.1.2021	1.6.2021
+3	Paracetamol	Cipla	Capsules	2	40	Y	1.6.2021	1.6.2022
+4	Metformin	Abbott	Tablet	10	40	Yes	31.6.2021	31.3.20224	
+5	Benadryl	Fugo	Syrup	100	65	y	1.6.2020	1.6.2023	

@@ -1,0 +1,6 @@
+OrderId 	CustomerName 	CustomerEmail 	TotalAmount
+
+
+
+ORD3	Kajal	Kajal@gmail.com	5
+ORD4	ram	ram@bing.com	8

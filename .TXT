@@ -1,0 +1,9 @@
+
+   Bill Id is:2
+
+Id	NAME	Company	Cost	Qty	ExpDate
+
+ORD3	Paracetamol	Cipla	2	2	1.6.2022
+
+
+ORD3	Dolo650	Dolo	5	1	1.12.2021

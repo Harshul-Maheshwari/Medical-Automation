@@ -1,0 +1,179 @@
+#include<stdio.h>
+#include<conio.h>
+void write_file(char *str[])
+{
+	FILE *fp;
+	int i=0;
+	fp = fopen("Medicine.csv","a");
+	for(i=0 ; i<9 ; i++)
+	{
+		fprintf(fp,"\n%s\t",str[i]);
+	}
+	printf("\n");
+	fclose(fp);
+}
+int countRows()
+{
+	int count = 0;
+	char check;
+
+	FILE *fp;
+	fp = fopen("Medicine.csv", "r");
+	clrscr();
+	while (check != EOF)
+	{
+		check = fgetc(fp);
+		if (check == '\n')
+		{
+			count++;
+		}
+	}
+	fclose(fp);
+	return (count - 1);
+}
+
+void input_medicine(char *str[])
+{
+	char ch;
+	int i=0,count;
+	char id[20];
+
+	count = countRows();
+	count++;
+	str[0] = itoa(count,id,20);
+	fflush(stdin);
+	printf("\n\tMedicine's Id : %s ",str[0]);
+	fflush(stdin);
+	printf("\n\tEnter Medicine's  Name : ");
+	gets(str[1]);
+	printf("\n\tEnter Medicine's Company Name : ");
+	gets(str[2]);
+	printf("\n\tEnter Medicine's Type : ");
+	gets(str[3]);
+	printf("\n\tEnter Medicine's Cost : ");
+	gets(str[4]);
+	printf("\n\tEnter Mecinine's Quantity : ");
+	fflush(stdin);
+	gets(str[5]);
+	printf("\n\tEnter NOC : ");
+	gets(str[6]);
+	printf("\n\tEnter Medicine's Mfg. Date : ");
+	gets(str[7]);
+	printf("\n\tEnter Medicine's Exp. Date : ");
+	gets(str[8]);
+
+	printf("\n\tDo you Want To Save Data(y/n) : ");
+	fflush(stdin);
+	scanf("%c",&ch);
+
+	if(ch == 121 || ch == 89)
+	{
+		write_file(str);
+	}
+}
+
+void search_M()
+{
+	FILE *p1;
+	char *rid,*str1;
+	int flag=0;
+	clrscr();
+	printf("\n\t\t\t=============================");
+	printf("\n\n\t\t\t\tSEARCH RECORD....\n");
+	printf("\n\t\t\t=============================");
+
+	printf("\n\t\tENTER ID FOR SEARCH : ");
+	fflush(stdin);
+	gets(rid);
+	p1=fopen("Medicine.csv","r");
+	printf("\n\nId\tNAME\tCompany\tType\tCost\tQty\tNOC\tMfgDate\tExpDate");
+	printf("\n--------------------------------------------------------------------");
+	while((fscanf(p1,"%s",str1))!=EOF)
+	{
+		if(strcmp(str1,rid)==0)
+		{
+			fgets(str1,100,p1);
+			flag = 1;
+			printf("\n\n%s%s",rid,str1);
+			break;
+		}
+	}
+	fclose(p1);
+	if(flag==0)
+		printf("\n\n\t\tMedicine Not Found....");
+	printf("\n\n\n\t\tPress Any Key.....!!!!!");
+}
+
+
+void show_medi()
+{
+	FILE *fp;
+	char data;
+	fp = fopen("Medicine.csv","r");
+	while(!feof(fp))
+	{
+		data=fgetc(fp);
+		if(data == '\t')
+		{
+			printf("  ");
+		}
+		else
+		{
+			printf("%c",data);
+		}
+	}
+
+	fclose(fp);
+}
+
+
+int medicine_menu()
+{
+    int ch;
+    char *str[9];
+    while(1)
+    {
+	clrscr();
+	printf("\n\t\t****************************************");
+	printf("\n\t\t\t---:MEDICINE MENU:---");
+	printf("\n\t\t\t1.ADD/PURCHASE MEDICINE");
+	printf("\n\t\t\t2.SEARCH MEDICINE");
+	printf("\n\t\t\t3.UPDATE MEDICINE");
+	printf("\n\t\t\t4.DELETE MEDICINE");
+	printf("\n\t\t\t5.SHOW/STOCK OF MEDICINE");
+	printf("\n\t\t\t0.EXIT");
+	printf("\n\t\t****************************************");
+
+	printf("\n\n\tEnter Your Choice :");
+	scanf("%d",&ch);
+
+	switch(ch)
+	{
+		case 1:
+			clrscr();
+			input_medicine(str);
+			getch();
+			break;
+		case 2:
+			clrscr();
+			search_M();
+			getch();
+			break;
+		case 3:
+			clrscr();
+			getch();
+			break;
+		case 4:
+			clrscr();
+			getch();
+			break;
+		case 5:
+			clrscr();
+			show_medi();
+			getch();
+			break;
+		case 0:
+			return 0;
+	}
+    }
+}

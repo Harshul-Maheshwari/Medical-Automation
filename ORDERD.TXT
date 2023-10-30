@@ -1,0 +1,7 @@
+OrderDetailId	OrderID 	MedicineName 	Company 	Rate 	qty 	EXP DATE 
+
+ODRD0	ORD3	Paracetamol	Cipla	2	2	1.6.2022
+
+ODRD1	ORD3	Dolo650	Dolo	5	1	1.12.2021
+
+ODRD4	ORD4	Paracetamol	Cipla	2	4	1.6.2022
